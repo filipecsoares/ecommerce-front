@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Layout from './Layout'
 import { getProducts } from "./apiCore"
+import Card from "./Card"
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([])
@@ -38,9 +39,19 @@ const Home = () => {
             description="Node React E-commerce App"
             className="container-fluid"
         >
-            {JSON.stringify(productsByArrival)}
-            <hr />
-            {JSON.stringify(productsBySell)}
+            <h2 className="mb-4">New Arrivals</h2>
+            <div className="row">
+                {productsByArrival.map((product, i) => (
+                    <Card key={i} product={product} />
+                ))}
+            </div>
+
+            <h2 className="mb-4">Best Sellers</h2>
+            <div className="row">
+                {productsBySell.map((product, i) => (
+                    <Card key={i} product={product} />
+                ))}
+            </div>
         </Layout>
     )
 }
