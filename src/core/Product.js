@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react"
-import Layout from "./Layout"
-import { read } from "./apiCore"
-import Card from "./Card"
+import React, { useState, useEffect } from "react";
+import Layout from "./Layout";
+import { read } from "./apiCore";
+import Card from "./Card";
 
 const Product = props => {
-    const [product, setProduct] = useState({})
-    const [error, setError] = useState(false)
+    const [product, setProduct] = useState({});
+    const [error, setError] = useState(false);
 
     const loadSingleProduct = productId => {
         read(productId).then(data => {
             if (data.error) {
-                setError(data.error)
+                setError(data.error);
             } else {
-                setProduct(data)
+                setProduct(data);
             }
-        })
-    }
+        });
+    };
 
     useEffect(() => {
-        const productId = props.match.params.productId
-        loadSingleProduct(productId)
-    }, [])
+        const productId = props.match.params.productId;
+        loadSingleProduct(productId);
+    }, []);
 
     return (
         <Layout
@@ -38,7 +38,7 @@ const Product = props => {
                 )}
             </div>
         </Layout>
-    )
-}
+    );
+};
 
-export default Product
+export default Product;
