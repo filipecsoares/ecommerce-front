@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getProducts, getBraintreeClientToken } from "./apiCore";
-import Card from "./Card";
+import { getBraintreeClientToken } from "./apiCore";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import "braintree-web";
