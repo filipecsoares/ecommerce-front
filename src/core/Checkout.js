@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
+import { 
     getBraintreeClientToken,
     processPayment,
     createOrder
@@ -7,7 +7,6 @@ import {
 import { emptyCart } from "./cartHelpers";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import "braintree-web";
 import DropIn from "braintree-web-drop-in-react";
 
 const Checkout = ({ products }) => {
@@ -57,18 +56,15 @@ const Checkout = ({ products }) => {
         );
     };
 
+    let deliveryAddress = data.address;
+
     const buy = () => {
         setData({ loading: true });
-        // send the nonce to your server
-        // nonce = data.instance.requestPaymentMethod()
         let nonce;
-        let getNonce = data.instance
+        data.instance
             .requestPaymentMethod()
             .then(data => {
-                // console.log(data);
                 nonce = data.nonce;
-                // once you have nonce (card type, card number) send nonce as 'paymentMethodNonce'
-                // and also total to be charged
                 const paymentData = {
                     paymentMethodNonce: nonce,
                     amount: getTotal(products)
@@ -77,22 +73,25 @@ const Checkout = ({ products }) => {
                 processPayment(userId, token, paymentData)
                     .then(response => {
                         console.log(response);
-                        // empty cart
-                        // create order
 
                         const createOrderData = {
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            address: data.address
+                            address: deliveryAddress
                         };
 
                         createOrder(userId, token, createOrderData)
                             .then(response => {
-                                // emptyCart(() => {
-                                //     console.log("payment success and empty cart");
-                                //     setData({ loading: false, success: response.success });
-                                // });
+                                emptyCart(() => {
+                                    console.log(
+                                        "payment success and empty cart"
+                                    );
+                                    setData({
+                                        loading: false,
+                                        success: true
+                                    });
+                                });
                             })
                             .catch(error => {
                                 console.log(error);
