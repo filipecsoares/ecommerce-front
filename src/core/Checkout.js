@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { 
+import {
     getBraintreeClientToken,
     processPayment,
     createOrder
@@ -7,6 +7,7 @@ import {
 import { emptyCart } from "./cartHelpers";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
+import "braintree-web";
 import DropIn from "braintree-web-drop-in-react";
 
 const Checkout = ({ products }) => {
@@ -34,7 +35,7 @@ const Checkout = ({ products }) => {
 
     useEffect(() => {
         getToken(userId, token);
-    });
+    }, []);
 
     const handleAddress = event => {
         setData({ ...data, address: event.target.value });
@@ -61,7 +62,7 @@ const Checkout = ({ products }) => {
     const buy = () => {
         setData({ loading: true });
         let nonce;
-        data.instance
+        let getNonce = data.instance
             .requestPaymentMethod()
             .then(data => {
                 nonce = data.nonce;
@@ -72,8 +73,6 @@ const Checkout = ({ products }) => {
 
                 processPayment(userId, token, paymentData)
                     .then(response => {
-                        console.log(response);
-
                         const createOrderData = {
                             products: products,
                             transaction_id: response.transaction.id,
@@ -104,6 +103,7 @@ const Checkout = ({ products }) => {
                     });
             })
             .catch(error => {
+                // console.log("dropin error: ", error);
                 setData({ ...data, error: error.message });
             });
     };
