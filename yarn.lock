@@ -3090,7 +3090,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
-baseline-browser-mapping@^2.11.12, baseline-browser-mapping@^2.9.0:
+baseline-browser-mapping@^2.11.12:
   version "2.11.21"
   resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.11.21.tgz#99af73cb8e54007e4f5345e132278e26c2662f2c"
   integrity sha512-uh8vpY/1/YyFkunIDFH/12p7/7VdPKA1hejMVEbdkEaWnUz0Hesvx5EbiU6XxjyHZIOju+ZMbQJkRh+es3/spQ==
@@ -3915,9 +3915,9 @@ decimal.js@^10.2.1:
   integrity sha512-F29o+vci4DodHYT9UrR5IEbfBw9pE5eSapIJdTqXK5+6hq+t8VRxwQyKlW2i+KDKFkkJQRvFyI/QXD83h8LyQw==
 
 decode-uri-component@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.5.0.tgz#4592fa1e1d640ec5e2760e2e168ad2ab5f2c9da1"
-  integrity sha512-1BiQVoK8C9gUbQU6NzAtO/tkz2qOFpEObMWpcFvhx4fYnj4Oc5yzaJN/LD36ihkVUdXyh5ZekzX+yM+ty/SrPg==
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.5.1.tgz#7f66b25bf435df723f9af55713dcf860a1c297d2"
+  integrity sha512-vWHQkXgg2cE3BB4rR0c+PYw9BCQzLoNIRMI7AunIkZst74tw/vpPp7VLoYtsR/cy1f55g3XDWUslfeCZjiZJyA==
 
 dedent@^0.7.0:
   version "0.7.0"
